@@ -7,10 +7,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 import { ColorModeButton } from '@/components/ui/color-mode';
 
-import type {
-  GetStaticProps,
-  InferGetStaticPropsType,
-} from 'next';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 export const getStaticProps = (async () => {
   const file = await fs.readFile('data/radio.csv', 'utf-8');
@@ -27,7 +24,7 @@ export default function Page({
     <Stack gap={1}>
       <Stack direction="row" gap={2} justifyContent="space-between">
         <Heading as="h1" fontSize="2xl">
-          MTC Radio
+          MTC Radio Frequencies
         </Heading>
 
         <ColorModeButton />
