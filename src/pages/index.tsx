@@ -3,7 +3,6 @@ import fs from 'fs/promises';
 import { Group, Heading, Link, Stack, Text } from '@chakra-ui/react';
 import { parse as parseCsv } from 'csv/sync';
 import React from 'react';
-import { LuExternalLink } from 'react-icons/lu';
 import { MdEdit } from 'react-icons/md';
 
 import { Button } from '@/components/ui/button';
@@ -54,11 +53,13 @@ export default function Page({
           {link.length > 0 ? (
             <Link
               colorPalette="accent"
+              display="unset"
               href={link}
               textDecorationColor="pink.600"
+              textDecorationSkip="edges trailing-spaces"
               variant="underline"
             >
-              {name} <LuExternalLink />
+              {name}
             </Link>
           ) : (
             <Text>{name}</Text>
