@@ -15,7 +15,17 @@ export const getStaticProps = (async () => {
   const data = parseCsv(file) as Array<[string, string, string]>;
   data.shift();
 
-  return { props: { data } };
+  return {
+    props: {
+      data: data
+        .sort((a, b) => Number(a[0]) - Number(b[0]))
+        .map(([frequency, name, link]) => [
+          Number(frequency).toFixed(1),
+          name,
+          link,
+        ]),
+    },
+  };
 }) satisfies GetStaticProps;
 
 export default function Page({
@@ -48,7 +58,7 @@ export default function Page({
       {data.map(([frequency, name, link], index) => (
         <Stack key={index} direction="row" fontSize="lg" gap={2}>
           <Text fontWeight="medium" minWidth="50px" textAlign="right">
-            {Number(frequency).toFixed(1)}
+            {frequency}
           </Text>
           {link.length > 0 ? (
             <Link
